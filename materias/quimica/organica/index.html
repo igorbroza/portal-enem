@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Unidade de aprendizagem do Portal ENEM: introdução à Química Orgânica, com explicação, questão comentada, exercícios e quiz.">
+  <meta name="theme-color" content="#123b33">
+  <title>Introdução à Química Orgânica | Portal ENEM</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172923;
+      --muted: #687770;
+      --forest: #123b33;
+      --forest-2: #1b594b;
+      --leaf: #91d5b2;
+      --mint: #e6f4eb;
+      --paper: #f4f6f0;
+      --white: #fff;
+      --line: #dce4dc;
+      --gold: #ffc978;
+      --rose: #b95145;
+      --shadow: 0 18px 45px rgba(21, 49, 39, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Aptos", "Segoe UI", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--forest-2); }
+    a:focus-visible, button:focus-visible, input:focus-visible + label {
+      outline: 3px solid #e5a445;
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 20;
+      padding: 10px 14px; color: white; background: var(--forest); border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+    .topbar {
+      color: white; background: #0f302a;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 44px)); min-height: 76px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; color: white; text-decoration: none; }
+    .brand-mark {
+      width: 40px; height: 40px; display: grid; place-items: center; border-radius: 13px;
+      color: #123b33; background: var(--leaf);
+    }
+    .brand-name { font-size: 15px; line-height: 1.1; font-weight: 800; letter-spacing: .09em; }
+    .brand-sub { display: block; margin-top: 5px; color: #b8d1c7; font-size: 11px; font-weight: 500; letter-spacing: .02em; }
+    .crumb { color: #b8d1c7; font-size: 13px; }
+    .crumb strong { color: white; font-weight: 650; }
+    .unit-tag {
+      padding: 7px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px;
+      color: #d7e9df; font-size: 12px; white-space: nowrap;
+    }
+    .hero {
+      position: relative; overflow: hidden; color: white; background: var(--forest);
+      background-image: radial-gradient(ellipse at 82% 45%, rgba(69,148,113,.32), transparent 34%),
+                        linear-gradient(115deg, #123b33 8%, #17483c 55%, #10352e 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 440px; height: 440px; right: -110px; top: -235px;
+      border: 1px solid rgba(219,255,234,.11); border-radius: 50%;
+      box-shadow: 0 0 0 48px rgba(219,255,234,.025), 0 0 0 104px rgba(219,255,234,.02);
+    }
+    .hero-inner {
+      position: relative; width: min(1180px, calc(100% - 44px)); margin: auto;
+      min-height: 405px; padding: 62px 0 66px; display: grid;
+      grid-template-columns: 1.12fr .88fr; align-items: center; gap: 34px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; color: var(--leaf);
+      font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 680px; margin: 16px 0 18px; font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5.5vw, 68px); font-weight: 500; letter-spacing: -.045em; line-height: 1.03;
+    }
+    h1 em { color: var(--leaf); font-style: normal; }
+    .hero-copy { max-width: 610px; margin-bottom: 27px; color: #d9e8df; font-size: 17px; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .button {
+      min-height: 46px; display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      padding: 0 17px; border: 1px solid transparent; border-radius: 12px; text-decoration: none;
+      font-size: 14px; font-weight: 750; transition: transform .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #17352b; background: var(--leaf); }
+    .button-ghost { color: white; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.04); }
+    .hero-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 25px; color: #b9d2c7; font-size: 12px; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+    .molecule-card {
+      position: relative; max-width: 430px; min-height: 282px; margin: auto; padding: 19px;
+      border: 1px solid rgba(224,255,236,.18); border-radius: 27px;
+      background: rgba(255,255,255,.07); box-shadow: 0 25px 70px rgba(0,0,0,.16);
+      backdrop-filter: blur(4px);
+    }
+    .molecule-label { display: flex; justify-content: space-between; color: #c4ded0; font-size: 11px; font-weight: 750; letter-spacing: .11em; text-transform: uppercase; }
+    .molecule-svg { display: block; width: 100%; height: 202px; margin-top: 9px; }
+    .formula-chip {
+      position: absolute; right: 21px; bottom: 17px; padding: 8px 12px; border-radius: 11px;
+      color: #17352b; background: var(--gold); font-family: Georgia, serif; font-size: 20px; font-weight: 700;
+    }
+    .content-wrap {
+      width: min(1180px, calc(100% - 44px)); margin: 0 auto; padding: 52px 0 78px;
+      display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: start; gap: 46px;
+    }
+    .toc {
+      position: sticky; top: 20px; padding: 18px 14px; border: 1px solid var(--line);
+      border-radius: 18px; background: rgba(255,255,255,.74);
+    }
+    .toc-title { margin: 0 8px 10px; color: #819087; font-size: 10px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .toc a {
+      display: block; margin: 2px 0; padding: 7px 9px; border-radius: 9px; color: #53655c;
+      font-size: 12px; line-height: 1.35; text-decoration: none;
+    }
+    .toc a:hover, .toc a:focus-visible { color: var(--forest); background: var(--mint); }
+    .toc-count { display: inline-block; width: 26px; color: #92a099; font-size: 10px; font-weight: 800; }
+    .lesson { min-width: 0; }
+    .section { margin-bottom: 25px; padding: 31px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+    .section-kicker { margin-bottom: 8px; color: #47816a; font-size: 11px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { margin-bottom: 13px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(27px, 3vw, 37px); font-weight: 500; letter-spacing: -.025em; line-height: 1.14; }
+    h3 { margin-bottom: 9px; font-size: 17px; line-height: 1.3; }
+    .lead { max-width: 720px; color: #4f6258; font-size: 17px; }
+    .section p:last-child { margin-bottom: 0; }
+    .objective-grid, .feature-grid, .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .objective {
+      min-height: 115px; padding: 17px; border-radius: 15px; background: #f5f8f4;
+      border: 1px solid #e8eee7;
+    }
+    .objective-number { display: block; margin-bottom: 10px; color: #4a9472; font-size: 11px; font-weight: 850; letter-spacing: .08em; }
+    .objective p { margin: 0; font-size: 14px; font-weight: 650; line-height: 1.45; }
+    .callout {
+      margin-top: 19px; padding: 16px 18px; border-left: 4px solid #e5ad56; border-radius: 0 13px 13px 0;
+      color: #55462e; background: #fff8e9; font-size: 14px;
+    }
+    .callout strong { color: #382e20; }
+    .feature-grid { margin-top: 19px; grid-template-columns: repeat(2, 1fr); }
+    .feature {
+      padding: 18px; border: 1px solid #e6ece6; border-radius: 15px; background: #f8faf7;
+    }
+    .feature-icon {
+      width: 34px; height: 34px; display: grid; place-items: center; margin-bottom: 12px;
+      border-radius: 10px; color: #286a52; background: #e3f3e8; font-size: 16px; font-weight: 850;
+    }
+    .feature p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .formula-row { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; margin-top: 17px; }
+    .formula {
+      display: inline-flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid #dfe9df;
+      border-radius: 12px; color: #254336; background: #f6faf5; font-size: 13px;
+    }
+    .formula b { font-family: Georgia, serif; font-size: 20px; }
+    .formula small { color: #77857d; font-size: 11px; }
+    .example-grid { margin-top: 18px; grid-template-columns: repeat(2, 1fr); }
+    .example {
+      display: flex; align-items: flex-start; gap: 13px; padding: 15px; border: 1px solid #e6ece6;
+      border-radius: 14px; background: #fbfcfa;
+    }
+    .example-formula {
+      flex: 0 0 58px; display: grid; place-items: center; min-height: 51px; border-radius: 12px;
+      color: #1b6149; background: #e7f3ea; font-family: Georgia, serif; font-size: 17px; font-weight: 700;
+    }
+    .example p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .example strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 14px; }
+    .enem-band {
+      position: relative; overflow: hidden; color: white; background: var(--forest);
+      background-image: radial-gradient(ellipse at 100% 0, rgba(95,174,130,.26), transparent 43%);
+    }
+    .enem-band .section-kicker { color: var(--leaf); }
+    .enem-band h2 { max-width: 660px; }
+    .enem-band > p { max-width: 700px; color: #d8e8dd; }
+    .enem-chips { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 17px; }
+    .enem-chips span { padding: 8px 11px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: #e4f2e8; font-size: 12px; }
+    .question {
+      margin-top: 19px; padding: 21px; border: 1px solid #e4ece3; border-radius: 16px; background: #f8faf7;
+    }
+    .question-label { display: inline-flex; margin-bottom: 12px; padding: 5px 9px; border-radius: 7px; color: #28664e; background: #e6f2e8; font-size: 10px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .question-text { color: #25352e; font-size: 16px; font-weight: 650; }
+    .options { display: grid; gap: 9px; margin: 15px 0 0; padding: 0; list-style: none; }
+    .option {
+      display: flex; gap: 11px; align-items: flex-start; padding: 11px 13px; border: 1px solid #e1e8e1;
+      border-radius: 11px; color: #506158; background: white; font-size: 14px;
+    }
+    .option b { color: #388060; }
+    details.solution { margin-top: 14px; border-top: 1px solid #e0e9e0; }
+    details.solution summary { width: fit-content; padding: 13px 0 4px; color: #27694f; cursor: pointer; font-size: 13px; font-weight: 800; }
+    .solution-body { padding: 9px 0 1px; color: #586a60; font-size: 14px; }
+    .solution-body strong { color: #243c30; }
+    .exercise-list { display: grid; gap: 12px; margin-top: 18px; }
+    .exercise {
+      padding: 17px 18px; border: 1px solid #e3eae2; border-radius: 14px; background: #fbfcfa;
+    }
+    .exercise-head { display: flex; align-items: flex-start; gap: 11px; }
+    .exercise-num {
+      flex: 0 0 28px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 9px;
+      color: #28684e; background: #e4f1e7; font-size: 12px; font-weight: 850;
+    }
+    .exercise p { margin: 0; color: #33443b; font-size: 14px; }
+    .exercise details summary { padding-top: 11px; color: #34795b; cursor: pointer; font-size: 12px; font-weight: 800; }
+    .exercise details p { padding-top: 7px; color: var(--muted); font-size: 13px; }
+    .quiz-section { border: 2px solid #c5e3ce; }
+    .quiz-intro { color: var(--muted); }
+    .quiz-question { margin: 17px 0; padding: 17px; border: 1px solid #e1e9e0; border-radius: 14px; background: #fafcf9; }
+    .quiz-question legend { padding: 0 7px; font-size: 14px; font-weight: 750; }
+    .quiz-choices { display: grid; gap: 7px; margin-top: 7px; }
+    .quiz-choice { display: flex; align-items: flex-start; gap: 9px; padding: 8px 10px; border-radius: 9px; color: #56675e; font-size: 13px; cursor: pointer; }
+    .quiz-choice:hover { background: #edf6ef; }
+    .quiz-choice input { accent-color: #24734f; margin-top: 5px; }
+    .quiz-feedback { display: none; margin-top: 8px; padding: 9px 11px; border-radius: 9px; font-size: 13px; }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.correct { color: #215f42; background: #e4f5e8; }
+    .quiz-feedback.incorrect { color: #874138; background: #fff0ec; }
+    .quiz-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; }
+    .quiz-button {
+      min-height: 45px; padding: 0 16px; border: 0; border-radius: 11px; color: white; background: #1d684b;
+      font: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+    }
+    .quiz-button:hover { background: #164e3a; }
+    .quiz-status { color: var(--muted); font-size: 13px; }
+    .quiz-score { display: none; margin-top: 15px; padding: 16px; border-radius: 13px; color: #1b513a; background: #e9f6ec; font-weight: 750; }
+    .quiz-score.show { display: block; }
+    .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; margin-top: 18px; }
+    .summary-item { display: flex; gap: 10px; align-items: flex-start; padding: 13px; border-radius: 12px; background: #f4f8f3; color: #4d6055; font-size: 13px; }
+    .check { color: #35815d; font-size: 16px; font-weight: 900; line-height: 1.2; }
+    .blueprint {
+      margin-top: 21px; padding: 20px; border: 1px dashed #b6cfc0; border-radius: 15px; background: #f7fbf6;
+    }
+    .blueprint h3 { margin-bottom: 8px; color: #214c37; }
+    .blueprint p { margin-bottom: 12px; color: #65766b; font-size: 13px; }
+    .blueprint-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .blueprint-list span { padding: 6px 9px; border: 1px solid #e0ebe0; border-radius: 999px; color: #456455; background: white; font-size: 11px; }
+    .sources { display: grid; gap: 11px; margin-top: 16px; }
+    .source-link {
+      display: flex; justify-content: space-between; gap: 15px; padding: 14px 15px; border: 1px solid #e2e9e1;
+      border-radius: 12px; color: #2b5f45; background: #fafcf9; text-decoration: none;
+    }
+    .source-link:hover { border-color: #9ec5a9; background: #f0f8f1; }
+    .source-link strong { display: block; color: #233c2e; font-size: 13px; }
+    .source-link small { display: block; margin-top: 3px; color: #728078; font-size: 11px; }
+    .source-arrow { align-self: center; font-size: 18px; }
+    .source-note { margin-top: 14px; color: #738078; font-size: 12px; }
+    .footer {
+      padding: 27px 22px; color: #c9ddd2; background: #0f302a; text-align: center; font-size: 12px;
+    }
+    .footer strong { color: white; }
+    .footer p { margin: 0; }
+    .back-top { display: inline-block; margin-top: 8px; color: #a9d6bb; text-decoration: none; }
+    @media (max-width: 880px) {
+      .hero-inner { grid-template-columns: 1fr .75fr; gap: 20px; }
+      .content-wrap { grid-template-columns: 1fr; gap: 18px; padding-top: 25px; }
+      .toc { position: static; padding: 13px; }
+      .toc nav { display: flex; flex-wrap: wrap; gap: 3px; }
+      .toc a { padding: 7px 8px; }
+      .toc-title { margin-bottom: 7px; }
+    }
+    @media (max-width: 650px) {
+      .topbar-inner { width: min(100% - 30px, 1180px); min-height: 68px; }
+      .crumb, .unit-tag { display: none; }
+      .hero-inner { width: min(100% - 34px, 1180px); padding: 44px 0 48px; grid-template-columns: 1fr; }
+      h1 { font-size: clamp(40px, 12vw, 58px); }
+      .hero-copy { font-size: 15px; }
+      .molecule-card { width: min(100%, 390px); min-height: 235px; }
+      .molecule-svg { height: 165px; }
+      .content-wrap { width: min(100% - 30px, 1180px); padding-bottom: 50px; }
+      .section { padding: 22px 19px; border-radius: 18px; }
+      .objective-grid, .feature-grid, .example-grid, .summary-grid { grid-template-columns: 1fr; }
+      .objective { min-height: unset; }
+      .formula-row { gap: 7px; }
+      .formula { padding: 7px 9px; }
+      .source-link { padding: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+    @media print {
+      .topbar, .hero-actions, .toc, .quiz-button, .back-top { display: none !important; }
+      body { background: white; }
+      .hero { color: var(--ink); background: white; }
+      .hero-copy, .hero-meta { color: #45554d; }
+      .content-wrap { display: block; width: 100%; padding: 16px 0; }
+      .section { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar" id="topo">
+    <div class="topbar-inner">
+      <a class="brand" href="#topo" aria-label="Portal ENEM, início desta unidade">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path d="M7 7.5 17.5 5M7 7.5l3.5 11M17.5 5l-7 13.5m7-13.5 1.5 11" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="7" cy="7.5" r="3" fill="currentColor"/><circle cx="17.5" cy="5" r="3" fill="currentColor"/>
+            <circle cx="10.5" cy="18.5" r="3" fill="currentColor"/><circle cx="19" cy="16" r="3" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-name">PORTAL ENEM<span class="brand-sub">aprenda. pratique. avance.</span></span>
+      </a>
+      <div class="crumb" aria-label="Localização"><strong>Ciências da Natureza</strong> &nbsp;/&nbsp; Química Orgânica</div>
+      <span class="unit-tag">UNIDADE 01</span>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Aula 01 · Introdução</div>
+        <h1 id="page-title">Química Orgânica começa no <em>carbono.</em></h1>
+        <p class="hero-copy">Como um único elemento forma moléculas presentes nos alimentos, combustíveis, medicamentos e materiais que usamos todos os dias?</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#objetivos">Começar a aula <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost" href="#quiz">Ir direto ao quiz <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta">
+          <span>◷ 12 min de leitura</span>
+          <span>▤ Ensino Médio</span>
+          <span>✦ Com atividade interativa</span>
+        </div>
+      </div>
+      <div class="molecule-card" aria-label="Ilustração de uma molécula de metano, com um átomo de carbono ligado a quatro átomos de hidrogênio">
+        <div class="molecule-label"><span>Uma estrutura simples</span><span>01 / 04</span></div>
+        <svg class="molecule-svg" viewBox="0 0 390 205" role="img" aria-labelledby="mol-title mol-desc">
+          <title id="mol-title">Modelo simplificado do metano</title>
+          <desc id="mol-desc">Um átomo de carbono central ligado por quatro ligações covalentes a quatro átomos de hidrogênio.</desc>
+          <g stroke="#a6ddbd" stroke-width="4" stroke-linecap="round">
+            <path d="M191 101 105 52M201 98 286 51M191 110 112 158M202 110 283 157"/>
+          </g>
+          <g fill="#e7c27e">
+            <circle cx="98" cy="48" r="24"/><circle cx="293" cy="47" r="24"/>
+            <circle cx="105" cy="164" r="24"/><circle cx="290" cy="164" r="24"/>
+          </g>
+          <circle cx="196" cy="104" r="39" fill="#8dd2a9"/>
+          <g fill="#143c33" font-family="Georgia,serif" font-weight="700" text-anchor="middle">
+            <text x="196" y="112" font-size="26">C</text>
+            <text x="98" y="55" font-size="18">H</text><text x="293" y="54" font-size="18">H</text>
+            <text x="105" y="171" font-size="18">H</text><text x="290" y="171" font-size="18">H</text>
+          </g>
+          <g fill="#d8eadf" font-family="system-ui,sans-serif" font-size="10" text-anchor="middle">
+            <text x="147" y="65">ligação</text><text x="244" y="63">covalente</text>
+          </g>
+        </svg>
+        <span class="formula-chip">CH<sub>4</sub></span>
+      </div>
+    </div>
+  </section>
+
+  <main class="content-wrap" id="conteudo">
+    <aside class="toc" aria-label="Navegação desta unidade">
+      <p class="toc-title">Nesta unidade</p>
+      <nav>
+        <a href="#objetivos"><span class="toc-count">01</span> Objetivos</a>
+        <a href="#conceito"><span class="toc-count">02</span> O que é Química Orgânica?</a>
+        <a href="#carbono"><span class="toc-count">03</span> O carbono</a>
+        <a href="#cotidiano"><span class="toc-count">04</span> No cotidiano</a>
+        <a href="#enem"><span class="toc-count">05</span> Conexão com o ENEM</a>
+        <a href="#resolvida"><span class="toc-count">06</span> Questão resolvida</a>
+        <a href="#exercicios"><span class="toc-count">07</span> Exercícios</a>
+        <a href="#quiz"><span class="toc-count">08</span> Quiz</a>
+        <a href="#resumo"><span class="toc-count">09</span> Revisão rápida</a>
+        <a href="#fontes"><span class="toc-count">10</span> Fontes</a>
+      </nav>
+    </aside>
+
+    <div class="lesson">
+      <section class="section" id="objetivos">
+        <p class="section-kicker">Antes de começar</p>
+        <h2>Ao final desta aula, você vai conseguir…</h2>
+        <div class="objective-grid">
+          <div class="objective"><span class="objective-number">OBJETIVO 01</span><p>Explicar, em linhas gerais, o que estuda a Química Orgânica.</p></div>
+          <div class="objective"><span class="objective-number">OBJETIVO 02</span><p>Relacionar as quatro ligações do carbono à formação de moléculas.</p></div>
+          <div class="objective"><span class="objective-number">OBJETIVO 03</span><p>Reconhecer exemplos orgânicos e algumas exceções clássicas.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="conceito">
+        <p class="section-kicker">Ideia principal</p>
+        <h2>O que é Química Orgânica?</h2>
+        <p class="lead">É a área da Química que estuda os compostos de carbono: como são formados, quais propriedades apresentam e como se transformam.</p>
+        <p>O carbono aparece em moléculas dos seres vivos e também em materiais fabricados, como plásticos, combustíveis e muitos medicamentos. Por isso, estudar Química Orgânica ajuda a entender fenômenos da saúde, da alimentação, da energia e do ambiente.</p>
+        <div class="callout"><strong>Atenção:</strong> na classificação tradicional, nem toda substância que contém carbono é considerada orgânica. Óxidos de carbono, como CO<sub>2</sub>, e sais como os carbonatos são exemplos de compostos classificados como inorgânicos.</div>
+      </section>
+
+      <section class="section" id="carbono">
+        <p class="section-kicker">A peça-chave</p>
+        <h2>Por que o carbono forma tantos compostos?</h2>
+        <p>O átomo de carbono costuma realizar <strong>quatro ligações covalentes</strong>. Ele também pode ligar-se a outros átomos de carbono, formando cadeias de diferentes tamanhos e formatos.</p>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">4</span>
+            <h3>Quatro ligações</h3>
+            <p>O carbono é tetravalente: pode compartilhar elétrons em até quatro ligações covalentes, de acordo com a estrutura da molécula.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">C—C</span>
+            <h3>Cadeias de carbono</h3>
+            <p>Átomos de carbono podem se conectar em cadeias abertas ou fechadas e formar estruturas pequenas ou muito grandes.</p>
+          </article>
+        </div>
+        <div class="formula-row" aria-label="Exemplos de fórmulas">
+          <span class="formula"><b>CH<sub>4</sub></b><small>metano</small></span>
+          <span class="formula"><b>CH<sub>3</sub>—CH<sub>3</sub></b><small>etano</small></span>
+          <span class="formula"><b>CH<sub>2</sub>=CH<sub>2</sub></b><small>eteno</small></span>
+        </div>
+      </section>
+
+      <section class="section" id="cotidiano">
+        <p class="section-kicker">Química por perto</p>
+        <h2>O conteúdo aparece no seu dia</h2>
+        <p>Uma fórmula representa a composição de uma substância. Ao ligar a fórmula a um uso conhecido, fica mais fácil perceber por que estudar as moléculas importa.</p>
+        <div class="example-grid">
+          <article class="example"><span class="example-formula">CH<sub>4</sub></span><p><strong>Metano</strong>Componente do gás natural e combustível.</p></article>
+          <article class="example"><span class="example-formula">C<sub>2</sub>H<sub>6</sub>O</span><p><strong>Etanol</strong>Presente em combustíveis e em produtos antissépticos.</p></article>
+          <article class="example"><span class="example-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></span><p><strong>Glicose</strong>Açúcar usado pelas células em processos de obtenção de energia.</p></article>
+          <article class="example"><span class="example-formula">(C<sub>2</sub>H<sub>4</sub>)<sub>n</sub></span><p><strong>Polietileno</strong>Polímero encontrado em embalagens e diversos objetos.</p></article>
+        </div>
+      </section>
+
+      <section class="section enem-band" id="enem">
+        <p class="section-kicker">Estratégia de prova</p>
+        <h2>Como esse assunto pode aparecer no ENEM?</h2>
+        <p>Uma questão pode apresentar uma situação do cotidiano e pedir que você interprete uma fórmula, reconheça uma substância ou relacione a composição de um material a um problema real.</p>
+        <div class="enem-chips" aria-label="Contextos possíveis"><span>combustíveis</span><span>alimentos</span><span>medicamentos</span><span>plásticos</span><span>ambiente</span></div>
+        <div class="callout" style="border-color:#ffc978;background:rgba(255,255,255,.1);color:#e5f0e8"><strong style="color:#fff">Estratégia:</strong> destaque as fórmulas e as informações do texto antes de escolher uma resposta. A questão resolvida abaixo é autoral e segue um formato de múltipla escolha para estudo.</div>
+      </section>
+
+      <section class="section" id="resolvida">
+        <p class="section-kicker">Aprenda pelo caminho</p>
+        <h2>Questão resolvida passo a passo</h2>
+        <div class="question">
+          <span class="question-label">Questão autoral · estilo ENEM</span>
+          <p class="question-text">Na combustão completa do metano (CH<sub>4</sub>), o gás reage com oxigênio (O<sub>2</sub>) e forma dióxido de carbono (CO<sub>2</sub>) e água (H<sub>2</sub>O). Considerando a classificação usual dos compostos, qual substância é orgânica?</p>
+          <ul class="options">
+            <li class="option"><b>A</b><span>Oxigênio (O<sub>2</sub>), porque participa da reação.</span></li>
+            <li class="option"><b>B</b><span>Metano (CH<sub>4</sub>), porque é um hidrocarboneto.</span></li>
+            <li class="option"><b>C</b><span>Dióxido de carbono (CO<sub>2</sub>), porque contém carbono.</span></li>
+            <li class="option"><b>D</b><span>Água (H<sub>2</sub>O), porque é um produto da reação.</span></li>
+          </ul>
+          <details class="solution">
+            <summary>Ver resolução comentada</summary>
+            <div class="solution-body">
+              <p><strong>Resposta: B.</strong> O metano é formado por carbono e hidrogênio; por isso, pertence ao grupo dos hidrocarbonetos, compostos orgânicos.</p>
+              <p>O CO<sub>2</sub> contém carbono, mas é um óxido de carbono classificado tradicionalmente como inorgânico. O oxigênio e a água também são inorgânicos.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="exercicios">
+        <p class="section-kicker">Agora é com você</p>
+        <h2>Exercícios para praticar</h2>
+        <p class="lead">Tente responder antes de abrir cada comentário. Explique seu raciocínio com suas próprias palavras.</p>
+        <div class="exercise-list">
+          <article class="exercise">
+            <div class="exercise-head"><span class="exercise-num">1</span><p>Qual alternativa apresenta um hidrocarboneto? <strong>a)</strong> CO<sub>2</sub> &nbsp; <strong>b)</strong> C<sub>2</sub>H<sub>6</sub> &nbsp; <strong>c)</strong> NaCl</p></div>
+            <details><summary>Conferir resposta comentada</summary><p><strong>b) C<sub>2</sub>H<sub>6</sub>.</strong> Hidrocarbonetos são compostos formados somente por carbono e hidrogênio.</p></details>
+          </article>
+          <article class="exercise">
+            <div class="exercise-head"><span class="exercise-num">2</span><p>O CO<sub>2</sub> tem carbono em sua fórmula. Por que ele não é classificado como composto orgânico na classificação tradicional?</p></div>
+            <details><summary>Conferir resposta comentada</summary><p>Porque os óxidos de carbono, como CO e CO<sub>2</sub>, fazem parte das exceções tradicionalmente classificadas como inorgânicas. A presença do elemento carbono, sozinha, não basta para chamar uma substância de orgânica.</p></details>
+          </article>
+          <article class="exercise">
+            <div class="exercise-head"><span class="exercise-num">3</span><p>O que significa dizer que o carbono é tetravalente?</p></div>
+            <details><summary>Conferir resposta comentada</summary><p>Significa que o carbono costuma formar quatro ligações covalentes, compartilhando elétrons com outros átomos.</p></details>
+          </article>
+          <article class="exercise">
+            <div class="exercise-head"><span class="exercise-num">4</span><p>Cite dois exemplos de compostos orgânicos presentes no cotidiano e indique onde podem ser encontrados.</p></div>
+            <details><summary>Conferir possibilidades de resposta</summary><p>Exemplos possíveis: etanol em combustíveis; glicose em alimentos e no organismo; polietileno em embalagens; metano no gás natural. Outros exemplos corretos também podem ser aceitos.</p></details>
+          </article>
+        </div>
+      </section>
+
+      <section class="section quiz-section" id="quiz">
+        <p class="section-kicker">Checagem rápida</p>
+        <h2>Quiz: teste o que aprendeu</h2>
+        <p class="quiz-intro">Marque uma resposta em cada pergunta e confira seu resultado. O quiz é corrigido na própria página.</p>
+        <form id="quizForm">
+          <fieldset class="quiz-question" data-question="q1">
+            <legend>1. O carbono é chamado de tetravalente porque costuma…</legend>
+            <div class="quiz-choices">
+              <label class="quiz-choice"><input type="radio" name="q1" value="a"><span>formar quatro ligações covalentes.</span></label>
+              <label class="quiz-choice"><input type="radio" name="q1" value="b"><span>aparecer apenas em seres vivos.</span></label>
+              <label class="quiz-choice"><input type="radio" name="q1" value="c"><span>formar ligações somente com oxigênio.</span></label>
+            </div>
+            <div class="quiz-feedback" id="feedback-q1" aria-live="polite"></div>
+          </fieldset>
+          <fieldset class="quiz-question" data-question="q2">
+            <legend>2. Qual fórmula representa um hidrocarboneto?</legend>
+            <div class="quiz-choices">
+              <label class="quiz-choice"><input type="radio" name="q2" value="a"><span>CH<sub>4</sub></span></label>
+              <label class="quiz-choice"><input type="radio" name="q2" value="b"><span>CO<sub>2</sub></span></label>
+              <label class="quiz-choice"><input type="radio" name="q2" value="c"><span>H<sub>2</sub>O</span></label>
+            </div>
+            <div class="quiz-feedback" id="feedback-q2" aria-live="polite"></div>
+          </fieldset>
+          <fieldset class="quiz-question" data-question="q3">
+            <legend>3. Qual substância contém carbono, mas é tradicionalmente classificada como inorgânica?</legend>
+            <div class="quiz-choices">
+              <label class="quiz-choice"><input type="radio" name="q3" value="a"><span>Etano (C<sub>2</sub>H<sub>6</sub>)</span></label>
+              <label class="quiz-choice"><input type="radio" name="q3" value="b"><span>Dióxido de carbono (CO<sub>2</sub>)</span></label>
+              <label class="quiz-choice"><input type="radio" name="q3" value="c"><span>Etanol (C<sub>2</sub>H<sub>6</sub>O)</span></label>
+            </div>
+            <div class="quiz-feedback" id="feedback-q3" aria-live="polite"></div>
+          </fieldset>
+          <div class="quiz-actions">
+            <button class="quiz-button" type="submit">Corrigir quiz</button>
+            <span class="quiz-status" id="quizStatus" role="status">Responda às três questões para corrigir.</span>
+          </div>
+          <div class="quiz-score" id="quizScore" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="section" id="resumo">
+        <p class="section-kicker">Para revisar depois</p>
+        <h2>Química Orgânica em 30 segundos</h2>
+        <div class="summary-grid">
+          <div class="summary-item"><span class="check">✓</span><span>A Química Orgânica estuda os compostos de carbono.</span></div>
+          <div class="summary-item"><span class="check">✓</span><span>O carbono costuma realizar quatro ligações covalentes.</span></div>
+          <div class="summary-item"><span class="check">✓</span><span>Átomos de carbono podem formar cadeias e estruturas diversas.</span></div>
+          <div class="summary-item"><span class="check">✓</span><span>CO, CO<sub>2</sub> e carbonatos são exemplos clássicos de exceções.</span></div>
+        </div>
+        <div class="blueprint">
+          <h3>Modelo para criar a sua unidade</h3>
+          <p>Esta página demonstra a estrutura que cada tema do Portal ENEM pode seguir. Use os blocos como roteiro e crie conteúdo próprio, com exemplos e fontes confiáveis.</p>
+          <div class="blueprint-list" aria-label="Elementos esperados em cada página">
+            <span>Título e objetivos</span><span>Explicação simples</span><span>Exemplo contextualizado</span>
+            <span>Como aparece no ENEM</span><span>Questão passo a passo</span><span>3–5 exercícios</span>
+            <span>Respostas comentadas</span><span>Quiz interativo</span><span>Resumo final</span><span>Fontes</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fontes">
+        <p class="section-kicker">Para continuar estudando</p>
+        <h2>Fontes e leituras</h2>
+        <p>Use fontes confiáveis para confirmar conceitos e praticar com questões oficiais. A questão resolvida desta unidade foi elaborada para fins didáticos.</p>
+        <div class="sources">
+          <a class="source-link" href="https://openstax.org/books/chemistry-2e/pages/20-introduction" target="_blank" rel="noopener noreferrer">
+            <span><strong>OpenStax · Chemistry 2e, capítulo 20</strong><small>Introdução a compostos de carbono e Química Orgânica · conteúdo em inglês</small></span><span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://openstax.org/books/chemistry-2e/pages/20-1-hydrocarbons" target="_blank" rel="noopener noreferrer">
+            <span><strong>OpenStax · Hidrocarbonetos</strong><small>Fórmulas e exemplos de compostos formados por carbono e hidrogênio · conteúdo em inglês</small></span><span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">
+            <span><strong>Inep · Provas e gabaritos do ENEM</strong><small>Consulte as provas oficiais para encontrar questões de Ciências da Natureza.</small></span><span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <p class="source-note">Esta unidade é um exemplo didático do Portal ENEM. O conteúdo foi resumido e adaptado para estudantes do Ensino Médio.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><strong>PORTAL ENEM</strong> · Ciências da Natureza · Unidade de exemplo para estudo e criação de páginas pelos estudantes.</p>
+    <a class="back-top" href="#topo">Voltar ao início ↑</a>
+  </footer>
+
+  <script>
+    (function () {
+      var answers = { q1: "a", q2: "a", q3: "b" };
+      var explanations = {
+        q1: "O carbono costuma realizar quatro ligações covalentes; essa característica é chamada de tetravalência.",
+        q2: "CH₄ é formado por carbono e hidrogênio. Compostos que contêm apenas esses dois elementos são hidrocarbonetos.",
+        q3: "CO₂ é um óxido de carbono. Apesar de conter carbono, é uma exceção tradicionalmente classificada como inorgânica."
+      };
+      var form = document.getElementById("quizForm");
+      var status = document.getElementById("quizStatus");
+      var scoreBox = document.getElementById("quizScore");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var score = 0;
+        var unanswered = [];
+        ["q1", "q2", "q3"].forEach(function (question) {
+          var selected = form.querySelector('input[name="' + question + '"]:checked');
+          var feedback = document.getElementById("feedback-" + question);
+          feedback.className = "quiz-feedback show";
+          if (!selected) {
+            unanswered.push(question);
+            feedback.classList.add("incorrect");
+            feedback.textContent = "Escolha uma alternativa para esta questão.";
+            return;
+          }
+          if (selected.value === answers[question]) {
+            score += 1;
+            feedback.classList.add("correct");
+            feedback.textContent = "Correto! " + explanations[question];
+          } else {
+            feedback.classList.add("incorrect");
+            feedback.textContent = "Ainda não. " + explanations[question];
+          }
+        });
+        if (unanswered.length) {
+          status.textContent = "Faltam " + unanswered.length + (unanswered.length === 1 ? " resposta." : " respostas.");
+          scoreBox.classList.remove("show");
+          return;
+        }
+        status.textContent = "Quiz corrigido.";
+        scoreBox.textContent = "Você acertou " + score + " de 3. " +
+          (score === 3 ? "Ótimo trabalho — avance para outro tema!" :
+           score === 2 ? "Bom resultado. Reveja os comentários da questão que errou." :
+           "Releia a explicação e tente novamente para fixar os conceitos.");
+        scoreBox.classList.add("show");
+      });
+    }());
+  </script>
+</body>
+</html>

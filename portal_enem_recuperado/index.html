@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portal ENEM: hub de estudos com conteúdos organizados por área.">
+<title>Portal ENEM | Início</title>
+<style>
+:root{--bg:#f4f6f0;--ink:#172923;--muted:#687770;--green:#123b33;--mint:#91d5b2;--line:#dce4dc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}.bar{background:#0f302a;color:#fff;padding:17px max(22px,calc((100% - 1100px)/2));font-weight:850;letter-spacing:.08em}.bar small{color:#b8d1c7;font-weight:500;letter-spacing:0;margin-left:12px}
+.hero{background:linear-gradient(120deg,#123b33,#1b594b);color:#fff;padding:70px 22px 62px}.wrap{width:min(1100px,100%);margin:auto}.eyebrow{color:var(--mint);font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+h1{font:500 clamp(42px,7vw,70px)/1.04 Georgia,serif;letter-spacing:-.04em;margin:14px 0 17px}.hero p{max-width:680px;color:#d9e8df;font-size:18px}
+.search{width:min(430px,100%);margin-top:18px;padding:13px 16px;border:1px solid #ffffff55;border-radius:12px;background:#ffffff12;color:white;font:inherit}.search::placeholder{color:#d9e8df}
+main{padding:42px 22px 70px}.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}.head h2{font:500 32px Georgia,serif;margin:0}.head p{margin:0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{display:flex;min-height:170px;flex-direction:column;padding:20px;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:0 12px 30px #1531270b;transition:.15s}.card:hover{transform:translateY(-3px);border-color:#8bb99a}.icon{font-size:22px}.card h3{margin:10px 0 4px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:13px}.foot{margin-top:auto;padding-top:14px;color:#297153;font-size:12px;font-weight:800}.featured{border-color:#a9d6b7;background:linear-gradient(145deg,#fff,#f0f8f1)}
+.note{margin-top:25px;padding:17px 19px;border-radius:14px;background:#e8f3e9;color:#425a4c;font-size:13px}.footer{padding:22px;text-align:center;background:#0f302a;color:#c9ddd2;font-size:12px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}.hero{padding:50px 20px}main{padding:33px 20px 50px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.head{display:block}.head p{margin-top:6px}.card{min-height:145px}}
+</style></head><body>
+<header class="bar">PORTAL ENEM <small>aprenda · pratique · avance</small></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">Seu hub de estudos</div><h1>Estude por tema.<br>Avance no seu ritmo.</h1><p>Conteúdos organizados para revisar assuntos do Ensino Médio e se preparar para o ENEM. Escolha uma área para começar.</p><input id="busca" class="search" type="search" placeholder="Buscar uma matéria ou conteúdo…" aria-label="Buscar conteúdo"></div></section>
+<main class="wrap"><div class="head"><h2>Explore as áreas</h2><p>Novas unidades serão adicionadas ao longo do projeto.</p></div>
+<div class="grid" id="cards">
+<a class="card" href="materias/matematica/"><span class="icon">📐</span><h3>Matemática</h3><p>Conceitos, estratégias e resolução de problemas.</p><span class="foot">Área em construção →</span></a>
+<a class="card" href="materias/linguagens/"><span class="icon">📚</span><h3>Linguagens</h3><p>Leitura, interpretação e análise de textos.</p><span class="foot">Área em construção →</span></a>
+<a class="card" href="materias/ciencias-humanas/"><span class="icon">🌎</span><h3>Ciências Humanas</h3><p>História, sociedade, espaço e pensamento.</p><span class="foot">Área em construção →</span></a>
+<a class="card featured" href="materias/quimica/organica/"><span class="icon">⚗️</span><h3>Química Orgânica</h3><p>Introdução ao carbono, compostos e exemplos do cotidiano.</p><span class="foot">Abrir unidade de exemplo →</span></a>
+<a class="card" href="materias/ciencias-da-natureza/"><span class="icon">🔬</span><h3>Ciências da Natureza</h3><p>Biologia, Física e outros conteúdos de Ciências.</p><span class="foot">Área em construção →</span></a>
+<a class="card" href="redacao/"><span class="icon">✍️</span><h3>Redação</h3><p>Repertório, planejamento e estrutura do texto.</p><span class="foot">Área em construção →</span></a>
+<a class="card" href="simulados/"><span class="icon">📝</span><h3>Simulados</h3><p>Pratique com questões e acompanhe seu aprendizado.</p><span class="foot">Em breve →</span></a>
+<a class="card" href="revisao-rapida/"><span class="icon">⚡</span><h3>Revisão rápida</h3><p>Resumos e pontos essenciais para revisar.</p><span class="foot">Em breve →</span></a>
+</div><div class="note"><strong>Sobre o projeto:</strong> cada unidade reúne explicação, exemplo, conexão com o ENEM, questão resolvida, exercícios comentados, quiz, resumo e fontes.</div></main>
+<footer class="footer">PORTAL ENEM · Um projeto de aprendizagem colaborativa</footer>
+<script>document.getElementById("busca").addEventListener("input",function(){var q=this.value.toLocaleLowerCase("pt-BR");document.querySelectorAll("#cards .card").forEach(function(c){c.hidden=!c.innerText.toLocaleLowerCase("pt-BR").includes(q)})});</script>
+</body></html>
